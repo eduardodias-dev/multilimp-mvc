@@ -2,6 +2,7 @@
 
 namespace App\Services\Implementations;
 
+use App\Models\Cliente;
 use App\Services\Interfaces\IClienteService;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -10,62 +11,63 @@ class ClienteService implements IClienteService{
 
     public function getClienteById($id)
     {
-        $cliente = DB::select('SELECT * FROM clientes WHERE id = :id', ['id' => $id]);
+        $cliente = Cliente::find($id);
 
-        return $cliente[0];
+        return $cliente;
     }
     public function addCliente(array $cliente){
         try{
-            $success = DB::insert('INSERT INTO clientes (nome, cpfcnpj, status) VALUES (:nome, :cpfcnpj, :status) ', [
-                'nome' => $cliente['nome'],
-                'cpfcnpj' => $cliente['cpfcnpj'],
-                'status' => $cliente['status']
-            ]);
+            $clienteModel = new Cliente();
 
-            return $success;
+            $clienteModel->nome = $cliente['nome'];
+            $clienteModel->cpfcnpj = $cliente['cpfcnpj'];
+            $clienteModel->status = $cliente['status'];
+
+            return $clienteModel->save();
         }
         catch(Exception $e){
-            return $e->getMessage();
+            die($e->getMessage());
+            return $e->getMessage() ;
         }
     }
 
     public function listClientes(array $filter = null)
     {
         try{
-            $list = DB::select('SELECT * FROM clientes');
-
+            $list = Cliente::all();
 
             return $list;
 
         }catch(Exception $e){
+
             return $e->getMessage();
         }
     }
     public function editCliente(array $cliente){
         try{
-            $lines = DB::update('UPDATE clientes set nome = :nome, status = :status, cpfcnpj = :cpfcnpj WHERE id = :id',[
+            $result = Cliente::where('id', $cliente['id'])->update([
                 'nome' => $cliente['nome'],
                 'cpfcnpj' => $cliente['cpfcnpj'],
                 'status' => $cliente['status'],
                 'id' => $cliente['id']
             ]);
 
-            return $lines;
+            return $result;
 
         }catch(Exception $e){
-            die($e->getMessage());
+            $e->getMessage();
         }
     }
 
     public function deleteCliente($clienteid){
         try{
-            $lines = DB::delete('DELETE FROM clientes WHERE id = :id', ['id' => $clienteid]);
+            $clienteModel = Cliente::find($clienteid);
 
-            return $lines;
+            return $clienteModel->delete();
 
         }catch(Exception $e){
             // return $e->getMessage();
-            die($e->getMessage());
+            $e->getMessage();
             return 0;
         }
     }

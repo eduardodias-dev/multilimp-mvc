@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Interfaces\IClienteService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClientesController extends Controller
 {
@@ -26,9 +27,27 @@ class ClientesController extends Controller
     }
 
     public function addAction(Request $request){
+        $validator = Validator::make($request->all(), [
+            'nome' => ['required', 'regex:/[a-zA-Z]+/'],
+            'cpfcnpj' => ['required'],
+            'status' => ['required', 'numeric']
+        ], [
+            'nome.required'          => 'Campo nome é obrigatório.',
+            'nome.regex'             => 'Campo nome permite somente letras.',
+            'cpfcnpj.required'       => 'Campo cpf/cnpj é obrigatório.',
+            'status.required'        => 'Campo status é obrigatório.',
+            'status.numeric'         => 'Formato inválido para o campo status.'
+        ]);
+
+        if($validator->fails())
+            return redirect()->route('clientes.add')->withErrors($validator)->withInput();
+
         $cliente = $request->all();
 
         $return = $this->clienteService->addCliente($cliente);
+
+        if(!$return)
+            return redirect()->route('clientes.addaction')->with('warning', 'Erro ao salvar cliente. Verifique com o suporte.');
 
         return redirect()->route('clientes.list');
     }
