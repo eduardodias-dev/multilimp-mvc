@@ -29,4 +29,8 @@ Route::prefix('clientes')->group(function(){
 Route::prefix('ordens')->group(function(){
     Route::get('/','OrdemServicoController@list')->name('ordens.list');
     Route::get('add', 'OrdemServicoController@add')->name('ordens.add');
+    Route::post('add', 'OrdemServicoController@addAction')->name('ordens.addaction');
+    Route::get('edit/{id}', 'OrdemServicoController@edit')->name('ordens.edit');
+    Route::post('edit/{id}', 'OrdemServicoController@editAction')->name('ordens.editaction');
+    Route::delete('delete', 'OrdemServicoController@delete')->name('ordens.del');
 });
