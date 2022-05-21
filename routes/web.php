@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.index');
-});
+})->name('home')->middleware('auth');
 
-Route::prefix('clientes')->group(function(){
+Route::prefix('clientes')->middleware('auth')->group(function(){
     Route::get('/', 'ClientesController@list')->name('clientes.list');
     Route::get('add', 'ClientesController@add')->name('clientes.add');
     Route::post('add', 'ClientesController@addAction')->name('clientes.addaction');
@@ -26,7 +26,7 @@ Route::prefix('clientes')->group(function(){
     Route::delete('delete', 'ClientesController@delete')->name('clientes.del');
 });
 
-Route::prefix('ordens')->group(function(){
+Route::prefix('ordens')->middleware('auth')->group(function(){
     Route::get('/','OrdemServicoController@list')->name('ordens.list');
     Route::get('add', 'OrdemServicoController@add')->name('ordens.add');
     Route::post('add', 'OrdemServicoController@addAction')->name('ordens.addaction');
@@ -34,3 +34,13 @@ Route::prefix('ordens')->group(function(){
     Route::post('edit/{id}', 'OrdemServicoController@editAction')->name('ordens.editaction');
     Route::delete('delete', 'OrdemServicoController@delete')->name('ordens.del');
 });
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login', 'Auth\LoginController@index')->name('login');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/register', 'Auth\RegisterController@register')->name('register');
+Route::post('/register', 'Auth\RegisterController@saveRegistration')->name('saveregistration');
