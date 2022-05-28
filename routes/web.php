@@ -33,6 +33,7 @@ Route::prefix('ordens')->middleware('auth')->group(function(){
     Route::get('edit/{id}', 'OrdemServicoController@edit')->name('ordens.edit');
     Route::post('edit/{id}', 'OrdemServicoController@editAction')->name('ordens.editaction');
     Route::delete('delete', 'OrdemServicoController@delete')->name('ordens.del');
+    Route::get('getOrdemServicoPrint', 'OrdemServicoController@getOrdemServicoPrint')->name('ordens.getprint');
 });
 
 Auth::routes();

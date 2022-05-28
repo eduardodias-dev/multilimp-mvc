@@ -58,6 +58,34 @@ class OrdemServicoController extends Controller
     }
 
     public function delete(Request $request){
+        // die($request->input('id'));
+        $id = $request->input('id');
 
+        $result = $this->ordemServicoService->deleteOrdemServico($id);
+
+        return $result;
+    }
+
+    public function getOrdemServicoPrint(Request $request){
+        $id = $request->only(['id']);
+        $ordemServico = $this->ordemServicoService->getOrdemServicoById($id);
+
+        //die(print_r($ordemServico[0]));
+        if(!empty($ordemServico)){
+            $ordemServico = $ordemServico[0];
+
+            $ordemServico->DataExecucao = \Carbon\Carbon::parse($ordemServico->DataExecucao)->translatedFormat('d/m/Y');
+            $ordemServico->DataAgendamento = \Carbon\Carbon::parse($ordemServico->DataAgendamento)->translatedFormat('d/m/Y');
+            $ordemServico->Valor = number_format($ordemServico->Valor, 2,',','.');
+            $ordemServico->ValorTotal = number_format($ordemServico->ValorTotal, 2,',','.');
+            $ordemServico->Desconto = number_format($ordemServico->Desconto, 2,',','.');
+
+            $cliente = $this->clienteService->getClienteById($ordemServico->ClienteId);
+
+
+            return view('ordens.layout-ordem-servico', ['ordemServico' => $ordemServico, 'cliente' => $cliente]);
+        }
+
+        return false;
     }
 }

@@ -74,6 +74,44 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label>Telefone</label>
+                                    <input type="text" name="telefone" class="form-control" value="{{$ordemServico->Telefone}}">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Endereço</label>
+                                    <input type="text" name="endereco" class="form-control" value="{{$ordemServico->Endereco}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Bairro</label>
+                                    <input type="text" name="bairro" class="form-control" value="{{$ordemServico->Bairro}}" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Cidade</label>
+                                    <input type="text" name="cidade" class="form-control" value="{{$ordemServico->Cidade}}" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>UF</label>
+                                    <input type="text" name="uf" class="form-control" value="{{$ordemServico->UF}}" maxlength="2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label>Valor</label>
                                     <input type="number" name="valor" class="form-control" value="{{$ordemServico->Valor}}">
                                 </div>

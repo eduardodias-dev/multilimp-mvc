@@ -56,6 +56,11 @@ class OrdemServicoService implements IOrdemServicoService{
             $ordemServicoEntity->Valor = $ordemServico['valor'];
             $ordemServicoEntity->Desconto = $ordemServico['desconto'];
             $ordemServicoEntity->ValorTotal = $ordemServico['valor'] - abs($ordemServico['desconto']); //$ordemServico['valorTotal'];
+            $ordemServicoEntity->Telefone = $ordemServico['telefone'];
+            $ordemServicoEntity->Endereco = $ordemServico['endereco'];
+            $ordemServicoEntity->Bairro = $ordemServico['bairro'];
+            $ordemServicoEntity->Cidade = $ordemServico['cidade'];
+            $ordemServicoEntity->UF = $ordemServico['uf'];
 
             $ordemServicoEntity->save();
 
@@ -76,7 +81,12 @@ class OrdemServicoService implements IOrdemServicoService{
                 'DataExecucao' => $ordemServico['dataexecucao'],
                 'Valor' => $ordemServico['valor'],
                 'Desconto' => $ordemServico['desconto'],
-                'ValorTotal' => $ordemServico['valor'] - abs($ordemServico['desconto'])
+                'ValorTotal' => $ordemServico['valor'] - abs($ordemServico['desconto']),
+                'Telefone' => $ordemServico['telefone'],
+                'Endereco' => $ordemServico['endereco'],
+                'Bairro' => $ordemServico['bairro'],
+                'Cidade' => $ordemServico['cidade'],
+                'UF' => $ordemServico['uf']
             ]);
 
             return $result;
@@ -87,7 +97,16 @@ class OrdemServicoService implements IOrdemServicoService{
         }
     }
     public function deleteOrdemServico($ordemServicoid){
+        try{
+            $ordemModel = OrdemServico::find($ordemServicoid);
 
+            return $ordemModel->delete();
+
+        }catch(Exception $e){
+            // return $e->getMessage();
+            $e->getMessage();
+            return 0;
+        }
     }
 
 }

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/dist/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/dist/css/custom.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/dist/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 </head>
@@ -150,6 +151,8 @@
 <script src="/dist/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/dist/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/dist/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+{{-- <script src="/dist/plugins/jspdf/jspdf.min.js"></script> --}}
+<script src="/dist/plugins/html2pdf/html2pdf.js"></script>
 
 @stack('script_pagina')
 
