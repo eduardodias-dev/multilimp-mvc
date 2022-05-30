@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
                     @if(!empty($list))
-                    @forelse($list as $item)
+                    @foreach($list as $item)
                         <tr>
                             <td>{{$item->OrdemServicoId}}</td>
                             <td>{{$item->Descricao}}</td>
@@ -81,12 +81,12 @@
                             </td>
                         </tr>
 
-                        @empty
+                        {{-- @empty
                             <tr>
                                 <td colspan="9" class="text-center">Nenhum registro encontrado</td>
-                            </tr>
+                            </tr> --}}
 
-                    @endforelse
+                    @endforeach
                     @endif
                 </tbody>
               </table>
