@@ -44,6 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if(!empty($list))
                     @forelse($list as $item)
                         <tr>
                             <td>{{$item->OrdemServicoId}}</td>
@@ -82,10 +83,11 @@
 
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum registro encontrado</td>
+                                <td colspan="9" class="text-center">Nenhum registro encontrado</td>
                             </tr>
 
                     @endforelse
+                    @endif
                 </tbody>
               </table>
             </div>
