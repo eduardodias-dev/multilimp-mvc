@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
                     @if(!empty($list))
-                    @foreach($list as $item)
+                    @foreach($list ?: [] as $item)
                         <tr>
                             <td>{{$item->OrdemServicoId}}</td>
                             <td>{{$item->Descricao}}</td>
