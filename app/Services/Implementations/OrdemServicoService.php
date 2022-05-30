@@ -34,7 +34,7 @@ class OrdemServicoService implements IOrdemServicoService{
             foreach($list as $ordem){
                 $cliente = $this->clienteService->getClienteById($ordem->ClienteId);
 
-                if($cliente)
+                if(!empty($cliente))
                     $ordem->nomeCliente = $cliente->nome;
             }
 
