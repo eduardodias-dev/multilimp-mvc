@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/dist/css/custom.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/dist/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="/dist/plugins/datetimepicker/jquery.datetimepicker.min.css" />
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
 <div class="wrapper">
@@ -151,6 +152,7 @@
 <script src="/dist/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/dist/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/dist/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="/dist/plugins/datetimepicker/jquery.datetimepicker.full.min.js"></script>
 {{-- <script src="/dist/plugins/jspdf/jspdf.min.js"></script> --}}
 <script src="/dist/plugins/html2pdf/html2pdf.js"></script>
 

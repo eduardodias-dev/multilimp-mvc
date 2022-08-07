@@ -51,8 +51,8 @@ class OrdemServicoService implements IOrdemServicoService{
             $ordemServicoEntity->Status = $ordemServico['status'];
             $ordemServicoEntity->Descricao = $ordemServico['descricao'];
             $ordemServicoEntity->Observacoes = $ordemServico['observacoes'];
-            $ordemServicoEntity->DataAgendamento = $ordemServico['dataagendamento'];
-            $ordemServicoEntity->DataExecucao = $ordemServico['dataexecucao'];
+            $ordemServicoEntity->DataAgendamento =  date_create_from_format('d/m/Y', $ordemServico['dataagendamento']);
+            $ordemServicoEntity->DataExecucao = date_create_from_format('d/m/Y', $ordemServico['dataexecucao']);
             $ordemServicoEntity->Valor = $ordemServico['valor'];
             $ordemServicoEntity->Desconto = $ordemServico['desconto'];
             $ordemServicoEntity->ValorTotal = $ordemServico['valor'] - abs($ordemServico['desconto']); //$ordemServico['valorTotal'];
@@ -65,6 +65,7 @@ class OrdemServicoService implements IOrdemServicoService{
             $ordemServicoEntity->save();
 
         }catch(Exception $e){
+            die($e->getMessage());
             return $e->getMessage();
         }
     }
@@ -77,8 +78,8 @@ class OrdemServicoService implements IOrdemServicoService{
                 'Status' => $ordemServico['status'],
                 'Descricao' => $ordemServico['descricao'],
                 'Observacoes' => $ordemServico['observacoes'],
-                'DataAgendamento' => $ordemServico['dataagendamento'],
-                'DataExecucao' => $ordemServico['dataexecucao'],
+                'DataAgendamento' => date_create_from_format('d/m/Y', $ordemServico['dataagendamento']),
+                'DataExecucao' => date_create_from_format('d/m/Y', $ordemServico['dataexecucao']),
                 'Valor' => $ordemServico['valor'],
                 'Desconto' => $ordemServico['desconto'],
                 'ValorTotal' => $ordemServico['valor'] - abs($ordemServico['desconto']),

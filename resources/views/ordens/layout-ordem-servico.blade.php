@@ -13,10 +13,10 @@
         <tr>
         </tr>
         <tr>
-            <td class='align-center'>Telefone1</td>
+            <td class='align-center'>14 98118-5969</td>
         </tr>
         <tr>
-            <td class='align-center'>Telefone2</td>
+            <td class='align-center'>-</td>
             <td class='align-right'>Nº</td>
             <td class='align-center'>{{$ordemServico->OrdemServicoId}}</td>
         </tr>
@@ -28,13 +28,13 @@
                         <td class='align-right'>CNPJ:</td>
                         <td>11111111/1111-11</td>
                         <td class='align-right'>Data Agendamento</td>
-                        <td>26/03/2022</td>
+                        <td>{{$ordemServico->ValorTotal}}</td>
                     </tr>
                     <tr>
-                        <td colspan='6'>Avenida Teste Bloco C.</td>
+                        <td colspan='6'>R. Albertina Arrielo, 426, B. Silas</td>
                     </tr>
                     <tr>
-                        <td colspan='2'>Cidade/Estado</td>
+                        <td colspan='2'>Jaú/SP</td>
                         <td class='align-right'>CEP:</td>
                         <td>32071-128</td>
                     </tr>

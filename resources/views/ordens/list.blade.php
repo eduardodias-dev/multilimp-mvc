@@ -37,6 +37,7 @@
                        <th>Nome Cliente</th>
                        <th>Status</th>
                        <th>Data Agendamento</th>
+                       <th>Data Execução</th>
                        <th>Telefone</th>
                        <th>Endereço</th>
                        <th>Valor Total</th>
@@ -64,7 +65,8 @@
                                     @default
                                         Sem status
                                 @endswitch</td>
-                            <td>{{$item->DataAgendamento}}</td>
+                            <td>{{date('d/m/Y', strtotime($item->DataAgendamento))}}</td>
+                            <td>{{date('d/m/Y', strtotime($item->DataExecucao))}}</td>
                             <td>{{$item->Telefone}}</td>
                             <td>{{$item->Endereco.', '.$item->Bairro.', '.$item->Cidade.'/'.$item->UF }}</td>
                             <td>{{$item->ValorTotal}}</td>

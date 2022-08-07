@@ -59,13 +59,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Data Agendamento</label>
-                                    <input type="date" name="dataagendamento" class="form-control" value="{{$ordemServico->DataAgendamento}}">
+                                    <input type="text" name="dataagendamento" class="form-control campodata" value="{{date('d/m/Y', strtotime($ordemServico->DataAgendamento))}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Data Execução</label>
-                                    <input type="date" name="dataexecucao" class="form-control" value="{{$ordemServico->DataExecucao}}">
+                                    <input type="text" name="dataexecucao" class="form-control campodata" value="{{date('d/m/Y', strtotime($ordemServico->DataExecucao))}}">
                                 </div>
                             </div>
                         </div>
@@ -154,3 +154,26 @@
 </section>
 
 @endsection
+
+@push('script_pagina')
+    <script>
+        $(document).ready(function(){
+            $('.campodata').datetimepicker({
+                format:'d/m/Y',
+                lang:'pt-BR',
+                i18n:{
+                    'pt-BR': { //Português(Brasil)
+                          months: [
+                            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+                          ],
+                          dayOfWeekShort: [
+                            "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"
+                          ],
+                          dayOfWeek: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+                        },
+                }
+
+            });
+        });
+    </script>
+@endpush
